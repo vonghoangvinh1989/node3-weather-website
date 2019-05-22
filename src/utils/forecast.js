@@ -12,7 +12,9 @@ const forecast = (latitude, longitude, callback) => {
             let temperature = body.currently.temperature;
             let precipProbability = body.currently.precipProbability;
             let summary = body.daily.data[0].summary;
-            let resultString = `${summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% change of rain.`;
+            let temperatureHigh = body.daily.data[0].temperatureHigh;
+            let temperatureLow = body.daily.data[0].temperatureLow;
+            let resultString = `${summary} Temperature high and low are ${temperatureHigh} degrees and ${temperatureLow} degrees. It is currently ${temperature} degrees out. There is a ${precipProbability}% change of rain.`;
             callback(undefined, resultString);
         }
     });
